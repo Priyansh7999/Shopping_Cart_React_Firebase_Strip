@@ -1,0 +1,45 @@
+.card{
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    height: 100%;
+}
+.card-image{
+    padding: 5px;
+    width: 100%;
+}
+.card-image img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition-duration: 300ms;
+}
+.card-image img:hover{
+    transform: scale(1.05);
+}
+.card-content{
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+.btn{
+    width: 100%;
+    overflow: hidden;
+}
+.btn:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.btn:disabled::after {
+    content: "✅";
+}
+/* for mobile */
+@media only screen and (max-width: 768px) {
+    .card-content h3{
+        font-size: 0.8rem;
+    }
+}

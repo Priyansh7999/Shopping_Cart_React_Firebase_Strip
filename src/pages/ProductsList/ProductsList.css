@@ -1,0 +1,21 @@
+.products-heading{
+    width: 100%;
+    height: auto;
+}
+.products-heading h1{
+    padding: 2rem;
+    text-align: center;
+    font-weight: 400;
+    background-color: antiquewhite;
+    font-size: 2rem
+}
+.products-lists{
+    background-color: aliceblue;
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 20px;
+    padding: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

@@ -1,20 +1,32 @@
 import React from 'react'
-
+import "./items.css";
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { ShoppingCartContext } from '../../context';
 export default function Items({item}) {
-    console.log("hello"+item)
+  const naviagte=useNavigate()
+  const {handleAddToCart,cardItems}=useContext(ShoppingCartContext)
+  function handleClick(id){
+      naviagte(`/product-details/${id}`)
+  }
   return (
-    <div className='relative group border border-cyan-700 p-5 cursor-pointer'>
-      <div className='overflow-hidden aspect-w-1 aspect-h-1'>
-        <img
-           src={item?.thumbnail}
-           alt={item?.title}
-           className='object-cover w-full h-full transition duration-300 group-hover:scale-105'
-        />
-        <div className='flex items-start justify-between mt-4 space-x-4'>
-            <h3 className='font-bold text-gray-950'>{item?.title}</h3>
+    <div className='card'>
+        <div className='card-image'>
+          <img 
+            src={item.thumbnail}
+            alt={item.title}
+          />
         </div>
-
-      </div>
+        <div className='card-content'>
+          <h3 className='font-bold text-gray-950'>{item?.title}</h3>
+          <h3 className='font-bold text-gray-950'>${item?.price}</h3>
+        </div>
+        <div className='Button'>
+          <button className='px-5 mt-5 w-full py-2 rounded-none bg-black text-white font-bold' onClick={()=>{handleClick(item.id)}}> View Details </button>
+          <button className='btn px-5 mt-5 w-full py-2 rounded-none bg-black text-white font-bold '
+                disabled={cardItems?.findIndex((it) => it.id === item?.id) > -1}
+                 onClick={() => handleAddToCart(item)}  >Add To Cart</button>
+        </div>
     </div>
   )
 }
